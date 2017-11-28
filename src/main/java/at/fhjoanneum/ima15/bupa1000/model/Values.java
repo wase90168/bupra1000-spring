@@ -1,6 +1,5 @@
-package at.fh.ima.swengs.flightexample.model;
+package at.fhjoanneum.ima15.bupa1000.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.math.BigDecimal;
 
 
