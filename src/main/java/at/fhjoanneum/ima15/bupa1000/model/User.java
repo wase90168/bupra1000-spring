@@ -19,8 +19,10 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @OneToMany(mappedBy = "user_id",orphanRemoval = true)
-    private List<User_Role> user_Roles;
+    //@OneToMany(mappedBy = "user_id",orphanRemoval = true,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users",
+            cascade = CascadeType.ALL)
+    private List<Role> roles;
 
     @Version
     private long version;
@@ -28,10 +30,10 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, List<User_Role> user_Roles, long version) {
+    public User(String username, String password, List<Role> roles, long version) {
         this.username = username;
         this.password = password;
-        this.user_Roles = user_Roles;
+        this.roles = roles;
         this.version = version;
     }
 
@@ -59,12 +61,12 @@ public class User {
         this.password = password;
     }
 
-    public List<User_Role> getUser_Roles() {
-        return user_Roles;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setUser_Roles(List<User_Role> user_Roles) {
-        this.user_Roles = user_Roles;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public long getVersion() {
