@@ -1,7 +1,12 @@
-spring.datasource.url=jdbc:BUPA1000://localhost;databaseName=bupa1000
+spring.datasource.url=jdbc:sqlserver://localhost;databaseName=bupa1000
 spring.datasource.username=sa
 spring.datasource.password=**************
 spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
 spring.jpa.show-sql=true
 spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2017Dialect
-spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.hibernate.ddl-auto = create-drop
+
+
+
+server.port=8080
