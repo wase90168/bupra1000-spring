@@ -1,6 +1,7 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Breastfeeding {
@@ -10,7 +11,7 @@ public class Breastfeeding {
     private long id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "breastfeeding")
-    private Person person;
+    private List<Person_Person> person_persons;
 
     private boolean breastfeeding;
 
@@ -22,8 +23,8 @@ public class Breastfeeding {
     public Breastfeeding() {
     }
 
-    public Breastfeeding(Person person, boolean breastfeeding, String description, long version) {
-        this.person = person;
+    public Breastfeeding(List<Person_Person> person_persons, boolean breastfeeding, String description, long version) {
+        this.person_persons = person_persons;
         this.breastfeeding = breastfeeding;
         this.description = description;
         this.version = version;
@@ -37,12 +38,12 @@ public class Breastfeeding {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
+    public List<Person_Person> getPerson_persons() {
+        return person_persons;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPerson_persons(List<Person_Person> person_persons) {
+        this.person_persons = person_persons;
     }
 
     public boolean isBreastfeeding() {

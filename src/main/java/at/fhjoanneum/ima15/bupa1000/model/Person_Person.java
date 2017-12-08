@@ -1,6 +1,7 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Person_Person {
@@ -26,7 +27,7 @@ public class Person_Person {
     public Person_Person() {
     }
 
-    public Person_Person(Breastfeeding breastfeeding, Person mother, Person baby, long version) {
+    public Person_Person(List<Breastfeeding> breastfeedings, Person mother, Person baby, long version) {
         this.breastfeeding = breastfeeding;
         this.mother = mother;
         this.baby = baby;
@@ -45,7 +46,7 @@ public class Person_Person {
         return breastfeeding;
     }
 
-    public void setBreastfeeding(Breastfeeding breastfeeding) {
+    public void setBreastfeedings(Breastfeeding breastfeeding) {
         this.breastfeeding = breastfeeding;
     }
 

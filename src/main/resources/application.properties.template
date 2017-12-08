@@ -1,0 +1,7 @@
+spring.datasource.url=jdbc:BUPA1000://localhost;databaseName=bupa1000
+spring.datasource.username=sa
+spring.datasource.password=**************
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2017Dialect
+spring.jpa.hibernate.ddl-auto=create-drop

@@ -15,9 +15,8 @@ public class Role {
     private String description;
 
    // @OneToMany(mappedBy = "role_id",orphanRemoval = true,cascade = CascadeType.ALL)
-   @ManyToMany(mappedBy = "roles",
-           cascade = CascadeType.ALL)
-    private List<User> users;
+   @ManyToMany
+    private List<Uzer> uzers;
 
     @Version
     private long version;
@@ -25,10 +24,10 @@ public class Role {
     public Role() {
     }
 
-    public Role(String name, String description, List<User> users, long version) {
+    public Role(String name, String description, List<Uzer> uzers, long version) {
         this.name = name;
         this.description = description;
-        this.users = users;
+        this.uzers = uzers;
         this.version = version;
     }
 
@@ -56,12 +55,12 @@ public class Role {
         this.description = description;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Uzer> getUzers() {
+        return uzers;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUzers(List<Uzer> uzers) {
+        this.uzers = uzers;
     }
 
     public long getVersion() {

@@ -4,11 +4,10 @@ package at.fhjoanneum.ima15.bupa1000.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-public class User {
+public class Uzer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,17 +19,17 @@ public class User {
     private String password;
 
     //@OneToMany(mappedBy = "user_id",orphanRemoval = true,cascade = CascadeType.ALL)
-    @ManyToMany(mappedBy = "users",
-            cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "uzers"
+            /*cascade = CascadeType.ALL*/)
     private List<Role> roles;
 
     @Version
     private long version;
 
-    public User() {
+    public Uzer() {
     }
 
-    public User(String username, String password, List<Role> roles, long version) {
+    public Uzer(String username, String password, List<Role> roles, long version) {
         this.username = username;
         this.password = password;
         this.roles = roles;
@@ -40,7 +39,7 @@ public class User {
     public long getId() {
         return id;
     }
-    
+
 
     public void setId(long id) {
         this.id = id;
