@@ -10,9 +10,9 @@ public class MR {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String shortName;
-
     private String name;
+
+    private String description;
 
     @OneToMany(mappedBy = "mr",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Value> values;
@@ -20,9 +20,9 @@ public class MR {
     public MR() {
     }
 
-    public MR(String shortName, String name, List<Value> values, long version) {
-        this.shortName = shortName;
+    public MR(String name, String description, List<Value> values) {
         this.name = name;
+        this.description = description;
         this.values = values;
     }
 
@@ -34,20 +34,20 @@ public class MR {
         this.id = id;
     }
 
-    public String getShortName() {
-        return shortName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Value> getValues() {
