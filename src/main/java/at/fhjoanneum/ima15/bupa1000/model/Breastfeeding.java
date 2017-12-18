@@ -1,6 +1,7 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,7 @@ public class Breastfeeding {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "breastfeeding")
     private List<Person_Person> person_persons;
 
+    @Null
     private boolean breastfeeding;
 
     private String description;
