@@ -17,9 +17,6 @@ public class Breastfeeding {
 
     private String description;
 
-    @Version
-    private long version;
-
     public Breastfeeding() {
     }
 
@@ -27,7 +24,6 @@ public class Breastfeeding {
         this.person_persons = person_persons;
         this.breastfeeding = breastfeeding;
         this.description = description;
-        this.version = version;
     }
 
     public long getId() {
@@ -60,13 +56,5 @@ public class Breastfeeding {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
     }
 }

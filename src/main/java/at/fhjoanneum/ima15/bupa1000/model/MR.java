@@ -17,9 +17,6 @@ public class MR {
     @OneToMany(mappedBy = "mr",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Value> values;
 
-    @Version
-    private long version;
-
     public MR() {
     }
 
@@ -27,7 +24,6 @@ public class MR {
         this.shortName = shortName;
         this.name = name;
         this.values = values;
-        this.version = version;
     }
 
     public long getId() {
@@ -60,13 +56,5 @@ public class MR {
 
     public void setValues(List<Value> values) {
         this.values = values;
-    }
-
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
     }
 }

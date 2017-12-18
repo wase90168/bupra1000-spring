@@ -21,9 +21,6 @@ public class Person_Person {
     @PrimaryKeyJoinColumn
     private Person baby;
 
-    @Version
-    private long version;
-
     public Person_Person() {
     }
 
@@ -31,7 +28,6 @@ public class Person_Person {
         this.breastfeeding = breastfeeding;
         this.mother = mother;
         this.baby = baby;
-        this.version = version;
     }
 
     public long getId() {
@@ -66,11 +62,4 @@ public class Person_Person {
         this.baby = baby;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

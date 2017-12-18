@@ -14,16 +14,12 @@ public class Category {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Dimension> dimensions;
 
-    @Version
-    private long version;
-
     public Category() {
     }
 
     public Category(String name, List<Dimension> dimensions, long version) {
         this.name = name;
         this.dimensions = dimensions;
-        this.version = version;
     }
 
     public long getId() {
@@ -50,11 +46,4 @@ public class Category {
         this.dimensions = dimensions;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

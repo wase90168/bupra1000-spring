@@ -16,9 +16,6 @@ public class Person {
     @ManyToOne
     private Type type;
 
-    @Version
-    private long version;
-
     public Person() {
     }
 
@@ -26,7 +23,6 @@ public class Person {
         this.prefix = prefix;
         this.suffix = suffix;
         this.type = type;
-        this.version = version;
     }
 
     public long getId() {
@@ -61,11 +57,4 @@ public class Person {
         this.type = type;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

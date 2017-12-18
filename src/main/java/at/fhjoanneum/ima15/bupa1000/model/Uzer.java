@@ -23,8 +23,6 @@ public class Uzer {
             /*cascade = CascadeType.ALL*/)
     private List<Role> roles;
 
-    @Version
-    private long version;
 
     public Uzer() {
     }
@@ -33,7 +31,6 @@ public class Uzer {
         this.username = username;
         this.password = password;
         this.roles = roles;
-        this.version = version;
     }
 
     public long getId() {
@@ -69,11 +66,5 @@ public class Uzer {
         this.roles = roles;
     }
 
-    public long getVersion() {
-        return version;
-    }
 
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

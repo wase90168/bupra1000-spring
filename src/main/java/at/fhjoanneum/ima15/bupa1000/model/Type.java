@@ -16,8 +16,6 @@ public class Type {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
     private List<Person> persons;
 
-    @Version
-    private long version;
 
     public Type() {
     }
@@ -26,7 +24,7 @@ public class Type {
         this.character = character;
         this.type = type;
         this.persons = persons;
-        this.version = version;
+
     }
 
     public long getId() {
@@ -61,11 +59,5 @@ public class Type {
         this.persons = persons;
     }
 
-    public long getVersion() {
-        return version;
-    }
 
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

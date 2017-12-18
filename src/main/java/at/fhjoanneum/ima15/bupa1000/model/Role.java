@@ -18,8 +18,6 @@ public class Role {
    @ManyToMany
     private List<Uzer> uzers;
 
-    @Version
-    private long version;
 
     public Role() {
     }
@@ -28,7 +26,6 @@ public class Role {
         this.name = name;
         this.description = description;
         this.uzers = uzers;
-        this.version = version;
     }
 
     public long getId() {
@@ -63,11 +60,4 @@ public class Role {
         this.uzers = uzers;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
-}
+  }

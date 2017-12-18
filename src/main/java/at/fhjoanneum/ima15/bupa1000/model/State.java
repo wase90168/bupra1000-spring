@@ -19,8 +19,7 @@ public class State {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "state")
     private List<Value> values;
 
-    @Version
-    private long version;
+
 
     public State() {
     }
@@ -30,7 +29,7 @@ public class State {
         this.description = description;
         this.null_allowed = null_allowed;
         this.values = values;
-        this.version = version;
+
     }
 
     public long getId() {
@@ -73,11 +72,5 @@ public class State {
         this.values = values;
     }
 
-    public long getVersion() {
-        return version;
-    }
 
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

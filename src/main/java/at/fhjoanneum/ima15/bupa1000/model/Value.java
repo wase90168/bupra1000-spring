@@ -32,8 +32,7 @@ public class Value {
     private Dimension dimension;
 
 
-    @Version
-    private long version;
+
 
     public Value() {
     }
@@ -45,7 +44,7 @@ public class Value {
         this.mr = mr;
         this.source = source;
         this.dimension = dimension;
-        this.version = version;
+
     }
 
     public long getId() {
@@ -104,11 +103,5 @@ public class Value {
         this.dimension = dimension;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
+   
 }

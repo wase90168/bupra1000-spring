@@ -15,8 +15,7 @@ public class Source {
     @OneToMany(mappedBy = "source",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Value> values;
 
-    @Version
-    private long version;
+
 
     public Source() {
     }
@@ -24,7 +23,7 @@ public class Source {
     public Source(String name, List<Value> values, long version) {
         this.name = name;
         this.values = values;
-        this.version = version;
+
     }
 
     public long getId() {
@@ -51,11 +50,4 @@ public class Source {
         this.values = values;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }
