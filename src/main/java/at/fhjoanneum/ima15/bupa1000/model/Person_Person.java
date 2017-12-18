@@ -14,18 +14,18 @@ public class Person_Person {
     private Breastfeeding breastfeeding;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Person mother_id;
+    private Person mother;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Person baby_id;
+    private Person baby;
 
     public Person_Person() {
     }
 
-    public Person_Person(List<Breastfeeding> breastfeedings, Person mother_id, Person baby_id, long version) {
+    public Person_Person(List<Breastfeeding> breastfeedings, Person mother, Person baby, long version) {
         this.breastfeeding = breastfeeding;
-        this.mother_id = mother_id;
-        this.baby_id = baby_id;
+        this.mother = mother;
+        this.baby = baby;
     }
 
     public long getId() {
@@ -44,20 +44,20 @@ public class Person_Person {
         this.breastfeeding = breastfeeding;
     }
 
-    public Person getMother_id() {
-        return mother_id;
+    public Person getMother() {
+        return mother;
     }
 
-    public void setMother_id(Person mother_id) {
-        this.mother_id = mother_id;
+    public void setMother(Person mother) {
+        this.mother = mother;
     }
 
-    public Person getBaby_id() {
-        return baby_id;
+    public Person getBaby() {
+        return baby;
     }
 
-    public void setBaby_id(Person baby_id) {
-        this.baby_id = baby_id;
+    public void setBaby(Person baby_id) {
+        this.baby = baby;
     }
 
 }
