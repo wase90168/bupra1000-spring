@@ -25,4 +25,4 @@ nbdist/
 
 ###password_jdbc###
 
-application.properties
+src/main/resources/application.properties
