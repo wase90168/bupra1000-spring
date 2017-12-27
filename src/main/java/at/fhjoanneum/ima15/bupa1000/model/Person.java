@@ -9,8 +9,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(nullable = false)
     private String prefix;
 
+    @Column(nullable = false)
     private String suffix;
 
     @ManyToOne

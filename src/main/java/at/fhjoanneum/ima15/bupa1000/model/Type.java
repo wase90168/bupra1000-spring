@@ -9,6 +9,7 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(nullable = false)
     private String character;
 
     private String type;

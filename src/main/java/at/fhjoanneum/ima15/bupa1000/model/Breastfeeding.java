@@ -14,7 +14,7 @@ public class Breastfeeding {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "breastfeeding")
     private List<Person_Person> person_persons;
 
-    private Boolean breastfeeding;
+    private boolean breastfeeding;
 
     private String description;
 
