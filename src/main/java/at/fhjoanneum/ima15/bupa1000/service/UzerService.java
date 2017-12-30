@@ -4,7 +4,6 @@ import at.fhjoanneum.ima15.bupa1000.model.Uzer;
 import at.fhjoanneum.ima15.bupa1000.model.UzerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +17,7 @@ public class UzerService implements UserDetailsService {
 
     private UzerRepository uzerRepository;
 
+
     @Autowired
     public UzerService(UzerRepository uzerRepository) {
         this.uzerRepository = uzerRepository;
@@ -30,14 +30,15 @@ public class UzerService implements UserDetailsService {
         if (uzer == null) {
             throw new NoSuchClientException("No user found with username: " + username);
         }
-        List<GrantedAuthority> auth = AuthorityUtils
-                .commaSeparatedStringToAuthorityList("ROLE_USER");
-        if (username.endsWith("Admin")) {
-            auth = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("ROLE_ADMIN");
-        }
+
+
+        List<GrantedAuthority> grantedAuthorities = uzer.getAuthorities();
+
         String password = uzer.getPassword();
-        return new org.springframework.security.core.userdetails.User(username, password, auth);
+        return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);
     }
+
+
+
 
 }

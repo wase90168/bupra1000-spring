@@ -9,4 +9,6 @@ public interface UzerRepository extends PagingAndSortingRepository<Uzer,Long> {
 
     Uzer findByUsername(@Param("username") String username);
 
+
+
 }
