@@ -1,6 +1,7 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
@@ -9,5 +10,7 @@ import java.util.List;
 public interface RoleRepository extends PagingAndSortingRepository<Role,Long> {
 
     List<Role> findAll();
+
+    Role findRoleByName(@Param("name") String name);
 
 }

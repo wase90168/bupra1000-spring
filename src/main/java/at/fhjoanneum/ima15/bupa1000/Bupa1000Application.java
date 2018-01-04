@@ -1,6 +1,7 @@
 package at.fhjoanneum.ima15.bupa1000;
 
 import at.fhjoanneum.ima15.bupa1000.model.*;
+import at.fhjoanneum.ima15.bupa1000.service.UzerService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +26,31 @@ public class Bupa1000Application{
 
 	}
 
+	//@Autowired
+	//UzerRepository uzerRepository;
+
 	@Bean
-	public CommandLineRunner demo(UzerRepository uzerRepository) {
+	public CommandLineRunner demo(RoleRepository roleRepository, UzerRepository uzerRepository, UzerService uzerService) {
 		return (args) -> {
-			//uzerRepository.save(new Uzer("John","Pa$$w0rd",roleRepository.findAll()));
+
+			Uzer uzer = new Uzer();
+			uzer.setUsername("John");
+			uzer.setPassword("PA$$w0rd");
+
+			uzerService.saveUzerWithRole(uzer);
+
+
+			/*uzerRepository.save(uzer);
+
+			uzer.setRoles(roleRepository.findAll());
+			roleRepository.save(uzer.getRoles());
+
+			/*Role role = roleRepository.findOne(1L);
+			role.setUzers(role.addUzer(uzer));
+			roleRepository.save(role);*/
+
+
+
 			//uzerRepository.delete(1L);
 		};
 

@@ -1,10 +1,10 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +20,7 @@ public class Role implements GrantedAuthority, Serializable {
     private String description;
 
    // @OneToMany(mappedBy = "role_id",orphanRemoval = true,cascade = CascadeType.ALL)
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH},fetch = FetchType.EAGER)
     private List<Uzer> uzers;
 
 
@@ -68,5 +68,12 @@ public class Role implements GrantedAuthority, Serializable {
     @Override
     public String getAuthority() {
         return name;
+    }
+
+    public List<Uzer> addUzer(Uzer uzer) {
+        List<Uzer> uzerList = new ArrayList<>();
+        uzerList.addAll(this.getUzers());
+        uzerList.add(uzer);
+        return uzerList;
     }
 }

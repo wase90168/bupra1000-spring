@@ -4,15 +4,12 @@ package at.fhjoanneum.ima15.bupa1000.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -28,7 +25,7 @@ public class Uzer implements Serializable {
     private String password;
 
     //@OneToMany(mappedBy = "user_id",orphanRemoval = true,cascade = CascadeType.ALL)
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "uzers")
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "uzers", fetch = FetchType.EAGER)
     private List<Role> roles;
 
 
@@ -102,4 +99,7 @@ public class Uzer implements Serializable {
 
 
     }
+
+
+
 }

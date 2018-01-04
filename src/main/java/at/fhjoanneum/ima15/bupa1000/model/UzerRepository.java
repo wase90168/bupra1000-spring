@@ -11,4 +11,6 @@ public interface UzerRepository extends PagingAndSortingRepository<Uzer,Long> {
 
 
 
+
+
 }
