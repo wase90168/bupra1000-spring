@@ -2,6 +2,6 @@ security:
   oauth2:
     client:
       client-id: acme
-      client-secret: acmesecret
+      client-secret: Pa$$w0rd
       scope: read,write
       auto-approve-scopes: '.*'

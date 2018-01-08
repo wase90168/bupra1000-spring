@@ -4,6 +4,7 @@ package at.fhjoanneum.ima15.bupa1000.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Uzer implements Serializable {
+public class Uzer  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +26,7 @@ public class Uzer implements Serializable {
     private String password;
 
     //@OneToMany(mappedBy = "user_id",orphanRemoval = true,cascade = CascadeType.ALL)
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "uzers", fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> roles;
 
 
@@ -76,28 +77,6 @@ public class Uzer implements Serializable {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
-    }
-
-
-    public List<GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = grantedAuthorities();
-
-        return authorities;
-    }
-
-
-    public List<GrantedAuthority> grantedAuthorities()
-
-    {
-        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        for (Role role : getRoles())
-        {
-            GrantedAuthority grantedAuthority = AuthorityUtils.commaSeparatedStringToAuthorityList(role.getAuthority()).get(1);
-            grantedAuthorityList.add(grantedAuthority);
-        }
-        return grantedAuthorityList;
-
-
     }
 
 

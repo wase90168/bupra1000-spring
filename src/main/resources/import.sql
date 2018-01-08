@@ -460,11 +460,11 @@ INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Kevin','Pa$$w0rd')
 INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Sebastian','Pa$$w0rd')
 
 
-INSERT INTO [dbo].[role_uzers] (uzers_id,roles_id)VALUES(1,1)
-INSERT INTO [dbo].[role_uzers] (uzers_id,roles_id)VALUES(2,2)
-INSERT INTO [dbo].[role_uzers] (uzers_id,roles_id)VALUES(3,2)
-INSERT INTO [dbo].[role_uzers] (uzers_id,roles_id)VALUES(4,2)
-INSERT INTO [dbo].[role_uzers] (uzers_id,roles_id)VALUES(2,1)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(1,1)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(3,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(4,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,1)
 
 
 

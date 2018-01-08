@@ -5,18 +5,23 @@ import at.fhjoanneum.ima15.bupa1000.model.RoleRepository;
 import at.fhjoanneum.ima15.bupa1000.model.Uzer;
 import at.fhjoanneum.ima15.bupa1000.model.UzerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.NoSuchClientException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UzerService implements UserDetailsService {
+public class UzerService {
 
     @Autowired
     private UzerRepository uzerRepository;
@@ -25,27 +30,18 @@ public class UzerService implements UserDetailsService {
     private RoleRepository roleRepository;
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        Uzer uzer = uzerRepository.findByUsername(username);
-        if (uzer == null) {
-            throw new NoSuchClientException("No user found with username: " + username);
-        }
 
-
-        List<GrantedAuthority> grantedAuthorities = uzer.getAuthorities();
-
-        String password = uzer.getPassword();
-        return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);
-    }
-
-    public void saveUzerWithRole(Uzer uzer){
+    @RequestMapping("/uzers/saveUzerWithRole")
+    public void saveUzerWithRole(@Param("username") String username, @Param("password") String password){
+        Uzer uzer = new Uzer();
+        uzer.setUsername(username);
+        uzer.setPassword(password);
         uzerRepository.save(uzer);
-        Role role = roleRepository.findRoleByName("ROLE_USER");
-        role.setUzers(role.addUzer(uzer));
-        roleRepository.save(role);
+        uzer.setRoles(roleRepository.findAll());
+        uzerRepository.save(uzer);
     }
+
+
 
 
 

@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,11 @@ public class Bupa1000Application{
 
 	}
 
+    @RequestMapping("/csrf")
+    public CsrfToken csrf(CsrfToken token) {
+        return token;
+    }
+
 	//@Autowired
 	//UzerRepository uzerRepository;
 
@@ -33,11 +40,14 @@ public class Bupa1000Application{
 	public CommandLineRunner demo(RoleRepository roleRepository, UzerRepository uzerRepository, UzerService uzerService) {
 		return (args) -> {
 
-			Uzer uzer = new Uzer();
-			uzer.setUsername("John");
-			uzer.setPassword("PA$$w0rd");
 
-			uzerService.saveUzerWithRole(uzer);
+
+
+			uzerService.saveUzerWithRole("John","Pa$$w0rd");
+
+
+
+			//uzerRepository.delete(2L);
 
 
 			/*uzerRepository.save(uzer);
