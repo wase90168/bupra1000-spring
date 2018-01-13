@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 
 
 @Entity
@@ -13,7 +16,7 @@ public class Value {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
+    @Digits(integer = 18, fraction = 20)
     private BigDecimal value;
 
     @ManyToOne

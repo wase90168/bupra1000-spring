@@ -13,10 +13,10 @@ public class Person_Person {
     @ManyToOne
     private Breastfeeding breastfeeding;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "person_person")
     private Person mother;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "person_person")
     private Person baby;
 
     public Person_Person() {

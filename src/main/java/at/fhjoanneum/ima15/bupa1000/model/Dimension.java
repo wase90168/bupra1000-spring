@@ -19,7 +19,7 @@ public class Dimension {
     @ManyToOne
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "source")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dimension")
     private List<Value> values;
 
     public Dimension() {

@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 
 @SpringBootApplication
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class Bupa1000Application{
+
+	ValueRepository valueRepository;
 
 
 	public static void main(String[] args) {
@@ -44,6 +47,8 @@ public class Bupa1000Application{
 
 
 			uzerService.saveUzerWithRole("John","Pa$$w0rd");
+
+
 
 
 

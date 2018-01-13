@@ -61,17 +61,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http    //.csrf().disable()
+        http    .csrf().disable()
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login/**", "/webjars/**","/oauth/authorize","/oauth/token","/csrf","/uzers/**","/roles/**","/oauth/**","/oauth2/**")
+                .antMatchers("/", "/login/**", "/webjars/**","/oauth/authorize","/oauth/token","/csrf","/uzers/**","/roles/**","/oauth/**","/oauth2/**","/values/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().exceptionHandling()
                 .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/oauth/authorize"))
-                .and().logout().logoutSuccessUrl("/").permitAll()
-                .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+                .and().logout().logoutSuccessUrl("/").permitAll();
+                //.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
     @Bean
