@@ -111,6 +111,12 @@ public class RestApiController {
 
     }
 
+    @RequestMapping(value = "/createUzer", method = RequestMethod.POST)
+    public void createUzer(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password){
+        Uzer uzer = new Uzer(username, password, roleRepository.findAll());
+        uzerRepository.save(uzer);
+    }
+
 
 
 
