@@ -15,8 +15,8 @@ public class MR {
 
     private String description;
 
-    @OneToMany(mappedBy = "mr",orphanRemoval = true,cascade = CascadeType.ALL)
-    private List<Value> values;
+    //@OneToMany(mappedBy = "mr",cascade = CascadeType.ALL)
+    //private List<Value> values;
 
     public MR() {
     }
@@ -24,7 +24,6 @@ public class MR {
     public MR(String name, String description, List<Value> values) {
         this.name = name;
         this.description = description;
-        this.values = values;
     }
 
     public long getId() {
@@ -51,11 +50,5 @@ public class MR {
         this.description = description;
     }
 
-    public List<Value> getValues() {
-        return values;
-    }
 
-    public void setValues(List<Value> values) {
-        this.values = values;
-    }
 }

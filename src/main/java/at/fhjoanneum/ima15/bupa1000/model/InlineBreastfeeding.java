@@ -9,7 +9,6 @@ interface InlineBreastfeeding {
 
     Long getId();
 
-    List<Person_Person> getPerson_persons();
 
     boolean getBreastfeeding();
 

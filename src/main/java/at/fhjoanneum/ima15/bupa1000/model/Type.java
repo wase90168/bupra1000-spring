@@ -14,17 +14,16 @@ public class Type {
 
     private String type;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
-    private List<Person> persons;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
+    //private List<Person> persons;
 
 
     public Type() {
     }
 
-    public Type(String character, String type, List<Person> persons, long version) {
+    public Type(String character, String type) {
         this.character = character;
         this.type = type;
-        this.persons = persons;
 
     }
 
@@ -52,13 +51,6 @@ public class Type {
         this.type = type;
     }
 
-    public List<Person> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
-    }
 
 
 }

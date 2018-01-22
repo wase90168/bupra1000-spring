@@ -1,29 +1,21 @@
 package at.fhjoanneum.ima15.bupa1000;
 
 import at.fhjoanneum.ima15.bupa1000.model.*;
-import at.fhjoanneum.ima15.bupa1000.service.UzerService;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
+import at.fhjoanneum.ima15.bupa1000.service.RestApiController;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.annotation.Order;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+
 
 
 @SpringBootApplication
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class Bupa1000Application{
 
-	ValueRepository valueRepository;
+
+
 
 
 	public static void main(String[] args) {
@@ -31,22 +23,29 @@ public class Bupa1000Application{
 
 	}
 
-    @RequestMapping("/csrf")
-    public CsrfToken csrf(CsrfToken token) {
-        return token;
-    }
 
-	//@Autowired
-	//UzerRepository uzerRepository;
 
 	@Bean
-	public CommandLineRunner demo(RoleRepository roleRepository, UzerRepository uzerRepository, UzerService uzerService) {
+	public CommandLineRunner demo(ValueRepository valueRepository, RoleRepository roleRepository, UzerRepository uzerRepository, RestApiController uzerService, StateRepository stateRepository,
+								  PersonRepository personRepository,
+								  SourceRepository sourceRepository,
+								  DimensionRepository dimensionRepository,
+								  MRRepository mrRepository) {
 		return (args) -> {
 
 
 
 
 			uzerService.saveUzerWithRole("John","Pa$$w0rd");
+
+
+			/*Value value = new Value(new BigDecimal(666),stateRepository.findOne(1L),personRepository.findOne(1L),mrRepository.findOne(1L),sourceRepository.findOne(1L),dimensionRepository.findOne(1L));
+			valueRepository.save(value);
+			value = valueRepository.findById(31L);
+			value.setPerson(personRepository.findOne(20L));
+			valueRepository.save(value);
+
+			valueRepository.delete(1L);*/
 
 
 

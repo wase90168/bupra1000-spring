@@ -16,19 +16,18 @@ public class State {
 
     private boolean null_allowed;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "state")
-    private List<Value> values;
+    //@OneToMany(mappedBy = "state",cascade = CascadeType.ALL)
+    //private List<Value> values;
 
 
 
     public State() {
     }
 
-    public State(String text, String description, boolean null_allowed, List<Value> values, long version) {
+    public State(String text, String description, boolean null_allowed) {
         this.text = text;
         this.description = description;
         this.null_allowed = null_allowed;
-        this.values = values;
 
     }
 
@@ -62,14 +61,6 @@ public class State {
 
     public void setNull_allowed(boolean null_allowed) {
         this.null_allowed = null_allowed;
-    }
-
-    public List<Value> getValues() {
-        return values;
-    }
-
-    public void setValues(List<Value> values) {
-        this.values = values;
     }
 
 

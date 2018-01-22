@@ -11,8 +11,8 @@ public class Breastfeeding {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "breastfeeding")
-    private List<Person_Person> person_persons;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "breastfeeding")
+    //private List<Person_Person> person_persons;
 
     private boolean breastfeeding;
 
@@ -21,8 +21,7 @@ public class Breastfeeding {
     public Breastfeeding() {
     }
 
-    public Breastfeeding(List<Person_Person> person_persons, boolean breastfeeding, String description, long version) {
-        this.person_persons = person_persons;
+    public Breastfeeding(boolean breastfeeding, String description, long version) {
         this.breastfeeding = breastfeeding;
         this.description = description;
     }
@@ -35,13 +34,7 @@ public class Breastfeeding {
         this.id = id;
     }
 
-    public List<Person_Person> getPerson_persons() {
-        return person_persons;
-    }
 
-    public void setPerson_persons(List<Person_Person> person_persons) {
-        this.person_persons = person_persons;
-    }
 
     public boolean isBreastfeeding() {
         return breastfeeding;

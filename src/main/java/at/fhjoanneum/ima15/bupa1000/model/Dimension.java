@@ -19,18 +19,17 @@ public class Dimension {
     @ManyToOne
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dimension")
-    private List<Value> values;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "dimension")
+    //private List<Value> values;
 
     public Dimension() {
     }
 
-    public Dimension(String name, String dimension, String description, Category category, List<Value> values) {
+    public Dimension(String name, String dimension, String description, Category category) {
         this.name = name;
         this.dimension = dimension;
         this.description = description;
         this.category = category;
-        this.values = values;
     }
 
     public long getId() {
@@ -73,11 +72,5 @@ public class Dimension {
         this.category = category;
     }
 
-    public List<Value> getValues() {
-        return values;
-    }
 
-    public void setValues(List<Value> values) {
-        this.values = values;
-    }
 }

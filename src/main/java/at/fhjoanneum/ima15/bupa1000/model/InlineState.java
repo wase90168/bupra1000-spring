@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.List;
 
-@Projection(name = "inlineState", types = {Type.class})
+@Projection(name = "inlineState", types = {State.class})
 interface InlineState {
 
     Long getId();

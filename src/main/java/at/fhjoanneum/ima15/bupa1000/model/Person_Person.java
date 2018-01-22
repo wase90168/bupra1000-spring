@@ -13,16 +13,17 @@ public class Person_Person {
     @ManyToOne
     private Breastfeeding breastfeeding;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "person_person")
+    @ManyToOne
     private Person mother;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "person_person")
+    @ManyToOne
     private Person baby;
 
     public Person_Person() {
     }
 
-    public Person_Person(List<Breastfeeding> breastfeedings, Person mother, Person baby, long version) {
+
+    public Person_Person(Breastfeeding breastfeeding, Person mother, Person baby) {
         this.breastfeeding = breastfeeding;
         this.mother = mother;
         this.baby = baby;
@@ -40,7 +41,7 @@ public class Person_Person {
         return breastfeeding;
     }
 
-    public void setBreastfeedings(Breastfeeding breastfeeding) {
+    public void setBreastfeeding(Breastfeeding breastfeeding) {
         this.breastfeeding = breastfeeding;
     }
 
@@ -56,7 +57,7 @@ public class Person_Person {
         return baby;
     }
 
-    public void setBaby(Person baby_id) {
+    public void setBaby(Person baby) {
         this.baby = baby;
     }
 

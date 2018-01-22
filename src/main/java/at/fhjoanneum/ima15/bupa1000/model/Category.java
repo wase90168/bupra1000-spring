@@ -11,15 +11,14 @@ public class Category {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private List<Dimension> dimensions;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    //private List<Dimension> dimensions;
 
     public Category() {
     }
 
-    public Category(String name, List<Dimension> dimensions, long version) {
+    public Category(String name, long version) {
         this.name = name;
-        this.dimensions = dimensions;
     }
 
     public long getId() {
@@ -38,12 +37,5 @@ public class Category {
         this.name = name;
     }
 
-    public List<Dimension> getDimensions() {
-        return dimensions;
-    }
-
-    public void setDimensions(List<Dimension> dimensions) {
-        this.dimensions = dimensions;
-    }
 
 }

@@ -12,17 +12,16 @@ public class Source {
 
     private String name;
 
-    @OneToMany(mappedBy = "source",orphanRemoval = true,cascade = CascadeType.ALL)
-    private List<Value> values;
+    //@OneToMany(mappedBy = "source",cascade = CascadeType.ALL)
+    //private List<Value> values;
 
 
 
     public Source() {
     }
 
-    public Source(String name, List<Value> values, long version) {
+    public Source(String name) {
         this.name = name;
-        this.values = values;
 
     }
 
@@ -42,12 +41,5 @@ public class Source {
         this.name = name;
     }
 
-    public List<Value> getValues() {
-        return values;
-    }
-
-    public void setValues(List<Value> values) {
-        this.values = values;
-    }
 
 }

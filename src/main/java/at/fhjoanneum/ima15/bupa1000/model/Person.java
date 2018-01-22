@@ -1,7 +1,6 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Person {
@@ -19,21 +18,19 @@ public class Person {
     @ManyToOne
     private Type type;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private List<Value> values;
+    //@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    //private List<Value> values;
 
-    @OneToOne
-    private  Person_Person person_person;
+
 
     public Person() {
     }
 
-    public Person(String prefix, String suffix, Type type, List<Value> values, Person_Person person_person) {
+    public Person(String prefix, String suffix, Type type) {
+        super();
         this.prefix = prefix;
         this.suffix = suffix;
         this.type = type;
-        this.values = values;
-        this.person_person = person_person;
     }
 
     public long getId() {
@@ -68,19 +65,6 @@ public class Person {
         this.type = type;
     }
 
-    public List<Value> getValues() {
-        return values;
-    }
 
-    public void setValues(List<Value> values) {
-        this.values = values;
-    }
 
-    public Person_Person getPerson_person() {
-        return person_person;
-    }
-
-    public void setPerson_person(Person_Person person_person) {
-        this.person_person = person_person;
-    }
 }
