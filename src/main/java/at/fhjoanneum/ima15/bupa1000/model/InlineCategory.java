@@ -11,8 +11,6 @@ interface InlineCategory {
 
     String getName();
 
-    List<Dimension> getDimensions();
-
 
 
 

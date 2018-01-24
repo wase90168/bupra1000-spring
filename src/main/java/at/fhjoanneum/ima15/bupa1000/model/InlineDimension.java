@@ -17,7 +17,5 @@ interface InlineDimension
 
     Category getCategory();
 
-    List<Value> getValues();
-
 
 }

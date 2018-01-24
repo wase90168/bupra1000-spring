@@ -220,8 +220,8 @@ INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (200, N'4444'
 SET IDENTITY_INSERT [dbo].[person] OFF
 SET IDENTITY_INSERT [dbo].[person_person] ON
 
---INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (1, 101, 3, 1)
-INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (2, 102, 3, 2)
+INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (1, 101, 1, 1)
+INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (2, 102, 2, 2)
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (3, 103, 3, 3)
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (4, 104, 3, 4)
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (5, 105, 3, 5)

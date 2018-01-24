@@ -41,6 +41,9 @@ public class RestApiController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
     void updateValue(@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
                      @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
@@ -84,23 +87,20 @@ public class RestApiController {
         person_personRepository.save(person_person);
 
 
-
-
     }
 
     @RequestMapping(value = "/createPerson_Person", method = RequestMethod.POST)
     void createPerson_Person(@RequestParam(value = "baby") Long babyId, @RequestParam(value = "mother") Long motherId,
                              @RequestParam(value = "breastfeeding") Long breastfeedingId) {
 
-        Person_Person person_person2 = new Person_Person(breastfeedingRepository.findOne(breastfeedingId),personRepository.findOne(motherId),personRepository.findOne(babyId));
+        Person_Person person_person2 = new Person_Person(breastfeedingRepository.findOne(breastfeedingId), personRepository.findOne(motherId), personRepository.findOne(babyId));
         person_personRepository.save(person_person2);
-
 
 
     }
 
     @RequestMapping(value = "/saveUzerWithRole", method = RequestMethod.POST)
-    public void saveUzerWithRole(@RequestParam("username") String username, @RequestParam("password") String password){
+    public void saveUzerWithRole(@RequestParam("username") String username, @RequestParam("password") String password) {
         Uzer uzer = new Uzer();
         uzer.setUsername(username);
         uzer.setPassword(password);
@@ -112,15 +112,30 @@ public class RestApiController {
     }
 
     @RequestMapping(value = "/createUzer", method = RequestMethod.POST)
-    public void createUzer(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password){
+    public void createUzer(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
         Uzer uzer = new Uzer(username, password, roleRepository.findAll());
         uzerRepository.save(uzer);
     }
 
+    @RequestMapping(value = "/createDimension", method = RequestMethod.POST)
+    public void createDimension(@RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
+        Dimension dimension1 = new Dimension(name, dimension, description, categoryRepository.findOne(categoryId));
+        dimensionRepository.save(dimension1);
+    }
 
-
-
-
+    @RequestMapping(value = "/updateDimension", method = RequestMethod.PUT)
+    public void createDimension(@RequestParam(value = "id") Long dimensionId, @RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
+        Dimension dimension1 = dimensionRepository.findOne(dimensionId);
+        /*if (description == "null" || description == "undefined")
+        {dimension1.setDescription(null);}
+        else
+        {dimension1.setDescription(description);}
+        dimension1.setName(name);
+        dimension1.setDimension(dimension);
+        dimensionRepository.save(dimension1);*/
+        dimension1.setCategory(categoryRepository.findOne(categoryId));
+        dimensionRepository.save(dimension1);
+    }
 
 
 }
