@@ -2,9 +2,14 @@ package at.fhjoanneum.ima15.bupa1000.service;
 
 import at.fhjoanneum.ima15.bupa1000.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 
 @ResponseBody
@@ -117,14 +122,14 @@ public class RestApiController {
         uzerRepository.save(uzer);
     }
 
-    @RequestMapping(value = "/createDimension", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/createDimension", method = RequestMethod.POST)
     public void createDimension(@RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
         Dimension dimension1 = new Dimension(name, dimension, description, categoryRepository.findOne(categoryId));
         dimensionRepository.save(dimension1);
-    }
+    }*/
 
     @RequestMapping(value = "/updateDimension", method = RequestMethod.PUT)
-    public void createDimension(@RequestParam(value = "id") Long dimensionId, @RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
+    public ResponseEntity<Dimension> updateDimension(UriComponentsBuilder ucBuilder, @RequestParam(value = "id") Long dimensionId, @RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
         Dimension dimension1 = dimensionRepository.findOne(dimensionId);
         /*if (description == "null" || description == "undefined")
         {dimension1.setDescription(null);}
@@ -135,6 +140,23 @@ public class RestApiController {
         dimensionRepository.save(dimension1);*/
         dimension1.setCategory(categoryRepository.findOne(categoryId));
         dimensionRepository.save(dimension1);
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setLocation(ucBuilder.path("/dimensions/{id}").buildAndExpand(dimension1.getId()).toUri());
+        return new ResponseEntity<Dimension>(headers, HttpStatus.CREATED);
+
+    }
+
+    @RequestMapping(value = "/createDimension", method = RequestMethod.POST)
+    // ----------------------------------------------------------------------------
+    public ResponseEntity<Dimension> createDimension(@RequestBody Dimension dimension, UriComponentsBuilder ucBuilder, @RequestParam(value = "category") Long categoryId) {
+        dimension.setCategory(categoryRepository.findOne(categoryId));
+        dimensionRepository.save(dimension);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/dimensions/{id}").buildAndExpand(dimension.getId()).toUri());
+        return new ResponseEntity<Dimension>(headers, HttpStatus.CREATED);
     }
 
 

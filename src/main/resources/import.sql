@@ -323,13 +323,13 @@ GO
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (100, 200, 3, 100)
 SET IDENTITY_INSERT [dbo].[person_person] OFF
 SET IDENTITY_INSERT [dbo].[category] ON
-INSERT [dbo].[category] ([id], [name]) VALUES (1, N'Hormone Axes')
-INSERT [dbo].[category] ([id], [name]) VALUES (2, N'Inflammation')
-INSERT [dbo].[category] ([id], [name]) VALUES (3, N'Oxidative Stress')
-INSERT [dbo].[category] ([id], [name]) VALUES (4, N'Micro Nutrients')
-INSERT [dbo].[category] ([id], [name]) VALUES (5, N'C1-Metabolism')
-INSERT [dbo].[category] ([id], [name]) VALUES (6, N'Microbiome')
-INSERT [dbo].[category] ([id], [name]) VALUES (7, N'Iron metabolism')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (1, N'Hormone Axes')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (2, N'Inflammation')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (3, N'Oxidative Stress')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (4, N'Micro Nutrients')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (5, N'C1-Metabolism')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (6, N'Microbiome')
+INSERT [dbo].[category] ([id], [category_name]) VALUES (7, N'Iron metabolism')
 
 SET IDENTITY_INSERT [dbo].[category] OFF
 SET IDENTITY_INSERT [dbo].[dimension] ON
