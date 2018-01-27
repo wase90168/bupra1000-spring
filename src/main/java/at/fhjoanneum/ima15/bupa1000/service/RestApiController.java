@@ -49,6 +49,9 @@ public class RestApiController {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    TypeRepository typeRepository;
+
     @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
     void updateValue(@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
                      @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
@@ -157,6 +160,27 @@ public class RestApiController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/dimensions/{id}").buildAndExpand(dimension.getId()).toUri());
         return new ResponseEntity<Dimension>(headers, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/createPerson", method = RequestMethod.POST)
+    // ----------------------------------------------------------------------------
+    public ResponseEntity<Person> createPerson(@RequestBody Person person, UriComponentsBuilder ucBuilder, @RequestParam(value = "type") Long typeId) {
+        person.setType(typeRepository.findOne(typeId));
+        personRepository.save(person);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/persons/{id}").buildAndExpand(person.getId()).toUri());
+        return new ResponseEntity<Person>(headers, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/updatePerson", method = RequestMethod.PUT)
+    // ----------------------------------------------------------------------------
+    public ResponseEntity<Person> updatePerson(@RequestBody Person person, UriComponentsBuilder ucBuilder, @RequestParam(value = "type") Long typeId) {
+        personRepository.save(person);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/persons/{id}").buildAndExpand(person.getId()).toUri());
+        return new ResponseEntity<Person>(headers, HttpStatus.CREATED);
     }
 
 
