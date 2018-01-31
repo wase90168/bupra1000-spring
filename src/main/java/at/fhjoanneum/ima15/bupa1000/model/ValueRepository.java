@@ -1,6 +1,5 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
-import com.sun.istack.internal.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -30,8 +29,7 @@ public interface ValueRepository extends PagingAndSortingRepository<Value,Long> 
     @Override
     Page<Value> findAll(Pageable pageable);
 
-    @Nullable
-    List<Value> findValuesByPerson_PrefixAndPerson_Suffix(@Param("prefix") String prefix,@Param("suffix") @Nullable String suffix);
+    List<Value> findValuesByPerson_PrefixAndPerson_Suffix(@Param("prefix") String prefix,@Param("suffix") String suffix);
 
     List<Value> findAllByOrderByIdDesc();
 

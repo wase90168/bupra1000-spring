@@ -3,7 +3,6 @@ package at.fhjoanneum.ima15.bupa1000.model;
 import at.fhjoanneum.ima15.bupa1000.service.JsonValueSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.istack.internal.Nullable;
 
 
 import javax.persistence.*;
@@ -20,26 +19,21 @@ public class Value {
 
     @Digits(integer = 18, fraction = 20)
     @JsonSerialize(using = JsonValueSerializer.class)
-    @Nullable
     private BigDecimal value;
 
     @ManyToOne
     private State state;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Nullable
     private Person person;
 
     @ManyToOne
-    @Nullable
     private MR mr;
 
     @ManyToOne
-    @Nullable
     private Source source;
 
     @ManyToOne
-    @Nullable
     private Dimension dimension;
 
 
