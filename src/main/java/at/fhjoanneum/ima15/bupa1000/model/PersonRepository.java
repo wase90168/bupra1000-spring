@@ -1,5 +1,6 @@
 package at.fhjoanneum.ima15.bupa1000.model;
 
+import com.sun.istack.internal.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,5 +15,6 @@ public interface PersonRepository extends PagingAndSortingRepository<Person,Long
 
     List<Person> findByPrefix (@Param(value = "prefix") String prefix);
 
+    @Nullable
     Person findByPrefixAndSuffix(@Param("prefix") String prefix, @Param("suffix") String suffix);
 }

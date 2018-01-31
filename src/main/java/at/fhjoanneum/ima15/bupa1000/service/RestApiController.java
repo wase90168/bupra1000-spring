@@ -2,6 +2,7 @@ package at.fhjoanneum.ima15.bupa1000.service;
 
 import at.fhjoanneum.ima15.bupa1000.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -193,6 +194,15 @@ public class RestApiController {
         value.setSource(sourceRepository.findOne(sourceId));
         value.setMr(mrRepository.findOne(mrId));
         value.setDimension(dimensionRepository.findOne(dimensionId));
+        value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
+        valueRepository.save(value);
+
+
+    }
+
+    @RequestMapping(value = "/createValueFlow2", method = RequestMethod.POST)
+    void createValueFlow(@RequestBody Value value, @Param("prefix") String prefix, @Param("suffix") String suffix) {
+
         value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
         valueRepository.save(value);
 
