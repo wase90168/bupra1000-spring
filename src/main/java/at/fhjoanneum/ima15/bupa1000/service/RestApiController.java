@@ -30,7 +30,7 @@ public class RestApiController {
     MRRepository mrRepository;
 
     @Autowired
-    DimensionRepository dimensionRepository;
+    BiomarkerRepository biomarkerRepository;
 
     @Autowired
     PersonRepository personRepository;
@@ -54,31 +54,25 @@ public class RestApiController {
     TypeRepository typeRepository;
 
     @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
-    void updateValue(@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
-                     @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
+    void updateValue(/*@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
+                     @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId*/ @RequestBody Value value) {
 
-        Value value = valueRepository.findOne(valueId);
+        /*Value value = valueRepository.findOne(valueId);
         value.setState(stateRepository.findOne(stateId));
         value.setSource(sourceRepository.findOne(sourceId));
         value.setMr(mrRepository.findOne(mrId));
-        value.setDimension(dimensionRepository.findOne(dimensionId));
-        value.setPerson(personRepository.findOne(personId));
+        value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
+        value.setPerson(personRepository.findOne(personId));*/
         valueRepository.save(value);
 
 
     }
 
     @RequestMapping(value = "/createValue", method = RequestMethod.POST)
-    void createValue(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
-                     @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
+    void createValue(@RequestBody Value value) {
 
-        Value value = new Value();
-        value.setValue(valueValue);
-        value.setState(stateRepository.findOne(stateId));
-        value.setSource(sourceRepository.findOne(sourceId));
-        value.setMr(mrRepository.findOne(mrId));
-        value.setDimension(dimensionRepository.findOne(dimensionId));
-        value.setPerson(personRepository.findOne(personId));
+
+
         valueRepository.save(value);
 
 
@@ -126,41 +120,41 @@ public class RestApiController {
         uzerRepository.save(uzer);
     }
 
-    /*@RequestMapping(value = "/createDimension", method = RequestMethod.POST)
-    public void createDimension(@RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
-        Dimension dimension1 = new Dimension(name, dimension, description, categoryRepository.findOne(categoryId));
-        dimensionRepository.save(dimension1);
+    /*@RequestMapping(value = "/createBiomarker", method = RequestMethod.POST)
+    public void createBiomarker(@RequestParam(value = "name") String name, @RequestParam(value = "biomarker") String biomarker, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
+        Biomarker biomarker1 = new Biomarker(name, biomarker, description, categoryRepository.findOne(categoryId));
+        biomarkerRepository.save(biomarker1);
     }*/
 
-    @RequestMapping(value = "/updateDimension", method = RequestMethod.PUT)
-    public ResponseEntity<Dimension> updateDimension(UriComponentsBuilder ucBuilder, @RequestParam(value = "id") Long dimensionId, @RequestParam(value = "name") String name, @RequestParam(value = "dimension") String dimension, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
-        Dimension dimension1 = dimensionRepository.findOne(dimensionId);
+    @RequestMapping(value = "/updateBiomarker", method = RequestMethod.PUT)
+    public ResponseEntity<Biomarker> updateBiomarker(UriComponentsBuilder ucBuilder, @RequestParam(value = "id") Long biomarkerId, @RequestParam(value = "name") String name, @RequestParam(value = "biomarker") String biomarker, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
+        Biomarker biomarker1 = biomarkerRepository.findOne(biomarkerId);
         /*if (description == "null" || description == "undefined")
-        {dimension1.setDescription(null);}
+        {biomarker1.setDescription(null);}
         else
-        {dimension1.setDescription(description);}
-        dimension1.setName(name);
-        dimension1.setDimension(dimension);
-        dimensionRepository.save(dimension1);*/
-        dimension1.setCategory(categoryRepository.findOne(categoryId));
-        dimensionRepository.save(dimension1);
+        {biomarker1.setDescription(description);}
+        biomarker1.setName(name);
+        biomarker1.setBiomarker(biomarker);
+        biomarkerRepository.save(biomarker1);*/
+        biomarker1.setCategory(categoryRepository.findOne(categoryId));
+        biomarkerRepository.save(biomarker1);
 
         HttpHeaders headers = new HttpHeaders();
 
-        headers.setLocation(ucBuilder.path("/dimensions/{id}").buildAndExpand(dimension1.getId()).toUri());
-        return new ResponseEntity<Dimension>(headers, HttpStatus.CREATED);
+        headers.setLocation(ucBuilder.path("/biomarkers/{id}").buildAndExpand(biomarker1.getId()).toUri());
+        return new ResponseEntity<Biomarker>(headers, HttpStatus.CREATED);
 
     }
 
-    @RequestMapping(value = "/createDimension", method = RequestMethod.POST)
+    @RequestMapping(value = "/createBiomarker", method = RequestMethod.POST)
     // ----------------------------------------------------------------------------
-    public ResponseEntity<Dimension> createDimension(@RequestBody Dimension dimension, UriComponentsBuilder ucBuilder, @RequestParam(value = "category") Long categoryId) {
-        dimension.setCategory(categoryRepository.findOne(categoryId));
-        dimensionRepository.save(dimension);
+    public ResponseEntity<Biomarker> createBiomarker(@RequestBody Biomarker biomarker, UriComponentsBuilder ucBuilder, @RequestParam(value = "category") Long categoryId) {
+        biomarker.setCategory(categoryRepository.findOne(categoryId));
+        biomarkerRepository.save(biomarker);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/dimensions/{id}").buildAndExpand(dimension.getId()).toUri());
-        return new ResponseEntity<Dimension>(headers, HttpStatus.CREATED);
+        headers.setLocation(ucBuilder.path("/biomarkers/{id}").buildAndExpand(biomarker.getId()).toUri());
+        return new ResponseEntity<Biomarker>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/createPerson", method = RequestMethod.POST)
@@ -185,7 +179,7 @@ public class RestApiController {
     }
 
     @RequestMapping(value = "/createValueFlow", method = RequestMethod.POST)
-    void createValueFlow(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
+    void createValueFlow(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
                      @RequestParam(value = "prefix") String prefix,@RequestParam(value = "suffix") String suffix, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
 
         Value value = new Value();
@@ -193,7 +187,7 @@ public class RestApiController {
         value.setState(stateRepository.findOne(stateId));
         value.setSource(sourceRepository.findOne(sourceId));
         value.setMr(mrRepository.findOne(mrId));
-        value.setDimension(dimensionRepository.findOne(dimensionId));
+        value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
         value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
         valueRepository.save(value);
 

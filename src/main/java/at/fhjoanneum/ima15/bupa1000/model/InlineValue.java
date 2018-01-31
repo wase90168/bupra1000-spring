@@ -22,7 +22,7 @@ interface InlineValue {
 
     Source getSource();
 
-    Dimension getDimension();
+    Biomarker getBiomarker();
 
 
 }

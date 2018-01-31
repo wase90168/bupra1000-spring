@@ -2,7 +2,6 @@ package at.fhjoanneum.ima15.bupa1000.security;
 
 
 import at.fhjoanneum.ima15.bupa1000.service.UzerLoginService;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

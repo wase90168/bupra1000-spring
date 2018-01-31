@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +21,7 @@ import java.util.Optional;
 public interface ValueRepository extends PagingAndSortingRepository<Value,Long> {
     List<Value> findAllBy();
 
-    //void save(@Param("value")BigDecimal value, @Param("state") State state, @Param("person") Person person, @Param("mr") MR mr, @Param("source") Source source, @Param("dimension") Dimension dimension);
+    //void save(@Param("value")BigDecimal value, @Param("state") State state, @Param("person") Person person, @Param("mr") MR mr, @Param("source") Source source, @Param("biomarker") Biomarker biomarker);
 
     Value findById(Long id);
 

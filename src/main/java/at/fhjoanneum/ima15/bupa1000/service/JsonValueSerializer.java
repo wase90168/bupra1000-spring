@@ -18,7 +18,7 @@ public class JsonValueSerializer extends JsonSerializer<BigDecimal> {
             throws IOException, JsonProcessingException {
 
 
-        String formattedValue = value.toString();
+        String formattedValue = value.stripTrailingZeros().toString();
         gen.writeString(formattedValue);
     }
 }

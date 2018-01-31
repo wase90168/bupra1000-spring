@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Dimension {
+public class Biomarker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,22 +12,22 @@ public class Dimension {
 
     private String name;
 
-    private String dimension;
+    private String biomarker;
 
     private String description;
 
     @ManyToOne
     private Category category;
 
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "dimension")
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "biomarker")
     //private List<Value> values;
 
-    public Dimension() {
+    public Biomarker() {
     }
 
-    public Dimension(String name, String dimension, String description, Category category) {
+    public Biomarker(String name, String biomarker, String description, Category category) {
         this.name = name;
-        this.dimension = dimension;
+        this.biomarker = biomarker;
         this.description = description;
         this.category = category;
     }
@@ -48,12 +48,12 @@ public class Dimension {
         this.name = name;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getBiomarker() {
+        return biomarker;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setBiomarker(String biomarker) {
+        this.biomarker = biomarker;
     }
 
     public String getDescription() {

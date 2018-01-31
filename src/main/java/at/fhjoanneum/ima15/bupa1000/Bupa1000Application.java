@@ -29,7 +29,7 @@ public class Bupa1000Application{
 	public CommandLineRunner demo(ValueRepository valueRepository, RoleRepository roleRepository, UzerRepository uzerRepository, RestApiController uzerService, StateRepository stateRepository,
 								  PersonRepository personRepository,
 								  SourceRepository sourceRepository,
-								  DimensionRepository dimensionRepository,
+								  BiomarkerRepository biomarkerRepository,
 								  MRRepository mrRepository) {
 		return (args) -> {
 
@@ -41,7 +41,7 @@ public class Bupa1000Application{
 			//System.out.print(valueRepository.findAllByPerson_PrefixAndPerson_Suffix("4444","0001"));
 
 
-			/*Value value = new Value(new BigDecimal(666),stateRepository.findOne(1L),personRepository.findOne(1L),mrRepository.findOne(1L),sourceRepository.findOne(1L),dimensionRepository.findOne(1L));
+			/*Value value = new Value(new BigDecimal(666),stateRepository.findOne(1L),personRepository.findOne(1L),mrRepository.findOne(1L),sourceRepository.findOne(1L),biomarkerRepository.findOne(1L));
 			valueRepository.save(value);
 			value = valueRepository.findById(31L);
 			value.setPerson(personRepository.findOne(20L));

@@ -12,7 +12,7 @@ public class Category {
     private String categoryName;
 
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    //private List<Dimension> dimensions;
+    //private List<Biomarker> biomarkers;
 
 
     public Category() {

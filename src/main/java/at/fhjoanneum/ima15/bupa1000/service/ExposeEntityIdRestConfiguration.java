@@ -14,7 +14,7 @@ public class ExposeEntityIdRestConfiguration extends RepositoryRestConfigurerAda
         config.exposeIdsFor(Value.class);
         config.exposeIdsFor(Breastfeeding.class);
         config.exposeIdsFor(Category.class);
-        config.exposeIdsFor(Dimension.class);
+        config.exposeIdsFor(Biomarker.class);
         config.exposeIdsFor(MR.class);
         config.exposeIdsFor(Person.class);
         config.exposeIdsFor(Person_Person.class);

@@ -4,14 +4,14 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.List;
 
-@Projection(name = "inlineDimension", types = {Dimension.class})
-interface InlineDimension
+@Projection(name = "inlineBiomarker", types = {Biomarker.class})
+interface InlineBiomarker
 {
     Long getId();
 
     String getName();
 
-    String getDimension();
+    String getBiomarker();
 
     String getDescription();
 

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RepositoryRestResource
-public interface DimensionRepository extends PagingAndSortingRepository <Dimension, Long> {
+public interface BiomarkerRepository extends PagingAndSortingRepository <Biomarker, Long> {
 
-    List<Dimension> findAllByCategory_Id(@Param("category_id") Long category_id);
+    List<Biomarker> findAllByCategory_Id(@Param("category_id") Long category_id);
 
 }
