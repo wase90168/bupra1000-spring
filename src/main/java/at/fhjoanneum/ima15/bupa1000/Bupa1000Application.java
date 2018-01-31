@@ -38,6 +38,8 @@ public class Bupa1000Application{
 
 			uzerService.saveUzerWithRole("John","Pa$$w0rd");
 
+			//System.out.print(valueRepository.findAllByPerson_PrefixAndPerson_Suffix("4444","0001"));
+
 
 			/*Value value = new Value(new BigDecimal(666),stateRepository.findOne(1L),personRepository.findOne(1L),mrRepository.findOne(1L),sourceRepository.findOne(1L),dimensionRepository.findOne(1L));
 			valueRepository.save(value);

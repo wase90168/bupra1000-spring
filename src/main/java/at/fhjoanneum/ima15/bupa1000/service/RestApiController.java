@@ -183,5 +183,21 @@ public class RestApiController {
         return new ResponseEntity<Person>(headers, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/createValueFlow", method = RequestMethod.POST)
+    void createValueFlow(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "dimension") Long dimensionId,
+                     @RequestParam(value = "prefix") String prefix,@RequestParam(value = "suffix") String suffix, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
+
+        Value value = new Value();
+        value.setValue(valueValue);
+        value.setState(stateRepository.findOne(stateId));
+        value.setSource(sourceRepository.findOne(sourceId));
+        value.setMr(mrRepository.findOne(mrId));
+        value.setDimension(dimensionRepository.findOne(dimensionId));
+        value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
+        valueRepository.save(value);
+
+
+    }
+
 
 }

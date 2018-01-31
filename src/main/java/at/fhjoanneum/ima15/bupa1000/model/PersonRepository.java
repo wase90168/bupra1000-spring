@@ -13,4 +13,6 @@ import java.util.List;
 public interface PersonRepository extends PagingAndSortingRepository<Person,Long>{
 
     List<Person> findByPrefix (@Param(value = "prefix") String prefix);
+
+    Person findByPrefixAndSuffix(@Param("prefix") String prefix, @Param("suffix") String suffix);
 }
