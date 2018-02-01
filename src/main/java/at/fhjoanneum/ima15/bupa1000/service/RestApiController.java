@@ -66,9 +66,10 @@ public class RestApiController {
         value.setMr(mrRepository.findOne(mrId));
         value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
         value.setPerson(personRepository.findOne(personId));*/
-
         commentRepository.save(value.getComment());
+
         valueRepository.save(value);
+
 
 
     }
