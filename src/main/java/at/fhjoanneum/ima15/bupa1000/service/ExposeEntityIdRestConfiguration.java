@@ -21,6 +21,8 @@ public class ExposeEntityIdRestConfiguration extends RepositoryRestConfigurerAda
         config.exposeIdsFor(Source.class);
         config.exposeIdsFor(State.class);
         config.exposeIdsFor(Type.class);
+        config.exposeIdsFor(Dimension.class);
+        config.exposeIdsFor(Comment.class);
 
 
     }

@@ -43,20 +43,24 @@ public class Value {
     @ManyToOne
     private Biomarker biomarker;
 
+    @ManyToOne
+    private Dimension dimension;
 
-
+    @ManyToOne
+    private Comment comment;
 
     public Value() {
     }
 
-    public Value(BigDecimal value, State state, Person person, MR mr, Source source, Biomarker biomarker) {
+    public Value(BigDecimal value, State state, Person person, MR mr, Source source, Biomarker biomarker, Dimension dimension, Comment comment) {
         this.value = value;
         this.state = state;
         this.person = person;
         this.mr = mr;
         this.source = source;
         this.biomarker = biomarker;
-
+        this.dimension = dimension;
+        this.comment = comment;
     }
 
     public long getId() {
@@ -107,11 +111,27 @@ public class Value {
         this.source = source;
     }
 
-    public Biomarker getBiomarker() {return biomarker;}
+    public Biomarker getBiomarker() {
+        return biomarker;
+    }
 
     public void setBiomarker(Biomarker biomarker) {
         this.biomarker = biomarker;
     }
 
-   
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(Dimension dimension) {
+        this.dimension = dimension;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
 }

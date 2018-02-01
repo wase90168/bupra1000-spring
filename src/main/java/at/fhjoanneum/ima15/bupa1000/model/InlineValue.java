@@ -24,6 +24,10 @@ interface InlineValue {
 
     Biomarker getBiomarker();
 
+    Dimension getDimension();
+
+    Comment getComment();
+
 
 }
 

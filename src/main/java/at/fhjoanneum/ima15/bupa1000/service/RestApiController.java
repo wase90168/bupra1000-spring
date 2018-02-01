@@ -53,6 +53,9 @@ public class RestApiController {
     @Autowired
     TypeRepository typeRepository;
 
+    @Autowired
+    CommentRepository commentRepository;
+
     @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
     void updateValue(/*@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
                      @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId*/ @RequestBody Value value) {
@@ -63,6 +66,8 @@ public class RestApiController {
         value.setMr(mrRepository.findOne(mrId));
         value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
         value.setPerson(personRepository.findOne(personId));*/
+
+        commentRepository.save(value.getComment());
         valueRepository.save(value);
 
 
@@ -72,7 +77,7 @@ public class RestApiController {
     void createValue(@RequestBody Value value) {
 
 
-
+        commentRepository.save(value.getComment());
         valueRepository.save(value);
 
 
@@ -180,7 +185,7 @@ public class RestApiController {
 
     @RequestMapping(value = "/createValueFlow", method = RequestMethod.POST)
     void createValueFlow(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
-                     @RequestParam(value = "prefix") String prefix,@RequestParam(value = "suffix") String suffix, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
+                         @RequestParam(value = "prefix") String prefix, @RequestParam(value = "suffix") String suffix, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
 
         Value value = new Value();
         value.setValue(valueValue);
@@ -188,7 +193,7 @@ public class RestApiController {
         value.setSource(sourceRepository.findOne(sourceId));
         value.setMr(mrRepository.findOne(mrId));
         value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
-        value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
+        value.setPerson(personRepository.findByPrefixAndSuffix(prefix, suffix));
         valueRepository.save(value);
 
 
@@ -197,7 +202,17 @@ public class RestApiController {
     @RequestMapping(value = "/createValueFlow2", method = RequestMethod.POST)
     void createValueFlow(@RequestBody Value value, @Param("prefix") String prefix, @Param("suffix") String suffix) {
 
-        value.setPerson(personRepository.findByPrefixAndSuffix(prefix,suffix));
+        value.setPerson(personRepository.findByPrefixAndSuffix(prefix, suffix));
+
+        if(value.getComment() == null)
+        {
+            commentRepository.save(new Comment());
+        }
+        else
+        {
+            commentRepository.save(value.getComment());
+
+        }
         valueRepository.save(value);
 
 
