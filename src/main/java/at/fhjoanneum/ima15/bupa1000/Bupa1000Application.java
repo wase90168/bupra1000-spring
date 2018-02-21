@@ -36,9 +36,9 @@ public class Bupa1000Application{
 
 			List<Uzer> uzers = new ArrayList<Uzer>();
 
-			uzerService.saveUzerWithRole("John","Pa$$w0rd");
+			uzerService.saveUzerWithRole("User","Pa$$w0rd");
 
-			uzerService.saveUzerWithRoleAdmin("admin","1234");
+			uzerService.saveUzerWithRoleAdmin("Admin","Pa$$w0rd");
 
 		};
 
