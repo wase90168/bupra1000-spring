@@ -11,6 +11,7 @@ public interface RoleRepository extends PagingAndSortingRepository<Role,Long> {
 
     List<Role> findAll();
 
-    Role findRoleByName(@Param("name") String name);
+    List<Role> findRoleByName(@Param("name") String name);
+
 
 }

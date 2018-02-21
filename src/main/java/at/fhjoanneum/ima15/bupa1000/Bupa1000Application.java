@@ -8,7 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @SpringBootApplication
@@ -33,41 +34,12 @@ public class Bupa1000Application{
 								  MRRepository mrRepository) {
 		return (args) -> {
 
-
-
+			List<Uzer> uzers = new ArrayList<Uzer>();
 
 			uzerService.saveUzerWithRole("John","Pa$$w0rd");
 
-			//System.out.print(valueRepository.findAllByPerson_PrefixAndPerson_Suffix("4444","0001"));
+			uzerService.saveUzerWithRoleAdmin("admin","1234");
 
-
-			/*Value value = new Value(new BigDecimal(666),stateRepository.findOne(1L),personRepository.findOne(1L),mrRepository.findOne(1L),sourceRepository.findOne(1L),biomarkerRepository.findOne(1L));
-			valueRepository.save(value);
-			value = valueRepository.findById(31L);
-			value.setPerson(personRepository.findOne(20L));
-			valueRepository.save(value);
-
-			valueRepository.delete(1L);*/
-
-
-
-
-
-			//uzerRepository.delete(2L);
-
-
-			/*uzerRepository.save(uzer);
-
-			uzer.setRoles(roleRepository.findAll());
-			roleRepository.save(uzer.getRoles());
-
-			/*Role role = roleRepository.findOne(1L);
-			role.setUzers(role.addUzer(uzer));
-			roleRepository.save(role);*/
-
-
-
-			//uzerRepository.delete(1L);
 		};
 
 		}

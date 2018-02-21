@@ -56,16 +56,11 @@ public class RestApiController {
     @Autowired
     CommentRepository commentRepository;
 
-    @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
-    void updateValue(/*@RequestParam(value = "value") Long valueId, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
-                     @RequestParam(value = "person") Long personId, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId*/ @RequestBody Value value) {
 
-        /*Value value = valueRepository.findOne(valueId);
-        value.setState(stateRepository.findOne(stateId));
-        value.setSource(sourceRepository.findOne(sourceId));
-        value.setMr(mrRepository.findOne(mrId));
-        value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
-        value.setPerson(personRepository.findOne(personId));*/
+
+    @RequestMapping(value = "/updateValue", method = RequestMethod.PUT)
+    void updateValue(@RequestBody Value value) {
+
         commentRepository.save(value.getComment());
 
         valueRepository.save(value);
@@ -114,10 +109,20 @@ public class RestApiController {
         uzer.setUsername(username);
         uzer.setPassword(password);
         uzerRepository.save(uzer);
-        uzer.setRoles(roleRepository.findAll());
+        uzer.setRoles(roleRepository.findRoleByName("ROLE_USER"));
         uzerRepository.save(uzer);
 
 
+    }
+
+    @RequestMapping(value = "/saveUzerWithRoleAdmin", method = RequestMethod.POST)
+    public void saveUzerWithRoleAdmin(@RequestParam("username") String username, @RequestParam("password") String password) {
+        Uzer uzer = new Uzer();
+        uzer.setUsername(username);
+        uzer.setPassword(password);
+        uzerRepository.save(uzer);
+        uzer.setRoles(roleRepository.findRoleByName("ROLE_ADMIN"));
+        uzerRepository.save(uzer);
     }
 
     @RequestMapping(value = "/createUzer", method = RequestMethod.POST)
@@ -126,22 +131,12 @@ public class RestApiController {
         uzerRepository.save(uzer);
     }
 
-    /*@RequestMapping(value = "/createBiomarker", method = RequestMethod.POST)
-    public void createBiomarker(@RequestParam(value = "name") String name, @RequestParam(value = "biomarker") String biomarker, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
-        Biomarker biomarker1 = new Biomarker(name, biomarker, description, categoryRepository.findOne(categoryId));
-        biomarkerRepository.save(biomarker1);
-    }*/
+
 
     @RequestMapping(value = "/updateBiomarker", method = RequestMethod.PUT)
     public ResponseEntity<Biomarker> updateBiomarker(UriComponentsBuilder ucBuilder, @RequestParam(value = "id") Long biomarkerId, @RequestParam(value = "name") String name, @RequestParam(value = "biomarker") String biomarker, @RequestParam(value = "description") String description, @RequestParam(value = "category") Long categoryId) {
         Biomarker biomarker1 = biomarkerRepository.findOne(biomarkerId);
-        /*if (description == "null" || description == "undefined")
-        {biomarker1.setDescription(null);}
-        else
-        {biomarker1.setDescription(description);}
-        biomarker1.setName(name);
-        biomarker1.setBiomarker(biomarker);
-        biomarkerRepository.save(biomarker1);*/
+
         biomarker1.setCategory(categoryRepository.findOne(categoryId));
         biomarkerRepository.save(biomarker1);
 
@@ -184,23 +179,8 @@ public class RestApiController {
         return new ResponseEntity<Person>(headers, HttpStatus.CREATED);
     }
 
+
     @RequestMapping(value = "/createValueFlow", method = RequestMethod.POST)
-    void createValueFlow(@RequestParam(value = "value") BigDecimal valueValue, @RequestParam(value = "state") Long stateId, @RequestParam(value = "biomarker") Long biomarkerId,
-                         @RequestParam(value = "prefix") String prefix, @RequestParam(value = "suffix") String suffix, @RequestParam(value = "mr") Long mrId, @RequestParam(value = "source") Long sourceId) {
-
-        Value value = new Value();
-        value.setValue(valueValue);
-        value.setState(stateRepository.findOne(stateId));
-        value.setSource(sourceRepository.findOne(sourceId));
-        value.setMr(mrRepository.findOne(mrId));
-        value.setBiomarker(biomarkerRepository.findOne(biomarkerId));
-        value.setPerson(personRepository.findByPrefixAndSuffix(prefix, suffix));
-        valueRepository.save(value);
-
-
-    }
-
-    @RequestMapping(value = "/createValueFlow2", method = RequestMethod.POST)
     void createValueFlow(@RequestBody Value value, @Param("prefix") String prefix, @Param("suffix") String suffix) {
 
         value.setPerson(personRepository.findByPrefixAndSuffix(prefix, suffix));

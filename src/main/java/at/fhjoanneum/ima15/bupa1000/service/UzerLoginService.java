@@ -27,7 +27,7 @@ public class UzerLoginService implements UserDetailsService {
         if (uzer == null) {
             //throw new NoSuchClientException("No user found with username: " + username);
         }
-     List<GrantedAuthority> grantedAuthorities = grantedAuthorities(uzer);
+        List<GrantedAuthority> grantedAuthorities = grantedAuthorities(uzer);
         //List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 
 
@@ -54,3 +54,7 @@ public class UzerLoginService implements UserDetailsService {
 
 
 }
+
+
+
+

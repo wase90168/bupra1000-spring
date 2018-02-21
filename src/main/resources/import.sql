@@ -454,26 +454,14 @@ INSERT INTO [dbo].[role] ([description],[name])VALUES('Administrator','ROLE_ADMI
 INSERT INTO [dbo].[role] ([description],[name])VALUES('User','ROLE_USER')
 
 
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Admin','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Michaela','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Kevin','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Sebastian','Pa$$w0rd')
-
-
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(1,1)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(3,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(4,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,1)
-
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/ml','nano moll pro milliliter')
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/mg','nano moll pro milligramm')
 
-INSERT INTO [dbo].[comment]([comment])VALUES('lökajsdfköhasödöjabgöaergksjdgkösajbdfökjsabdövkjbasödkvjbaöskjdvbökasjdbvökasjbdvökjasbv')
+INSERT INTO [dbo].[comment]([comment])VALUES('Naaaaaaaaaaaaaaa Fuuuu')
 INSERT INTO [dbo].[comment]([comment])VALUES('Der Wert ist ein Wahnsinn')
 INSERT INTO [dbo].[comment]([comment])VALUES('Für die Tonne')
-INSERT INTO [dbo].[comment]([comment])VALUES('Jo alter is dei Fett')
-INSERT INTO [dbo].[comment]([comment])VALUES('Babyspeck')
+INSERT INTO [dbo].[comment]([comment])VALUES('Glei Einfechern')
+INSERT INTO [dbo].[comment]([comment])VALUES('Ojeeeeeeeeee')
 
 
 
