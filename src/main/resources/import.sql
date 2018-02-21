@@ -454,19 +454,6 @@ SET IDENTITY_INSERT [dbo].[state] OFF
 INSERT INTO [dbo].[role] ([description],[name])VALUES('Administrator','ROLE_ADMIN')
 INSERT INTO [dbo].[role] ([description],[name])VALUES('User','ROLE_USER')
 
-
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Admin','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Michaela','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Kevin','Pa$$w0rd')
-INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Sebastian','Pa$$w0rd')
-
-
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(1,1)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(3,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(4,2)
-INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,1)
-
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/ml','nano moll pro milliliter')
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/mg','nano moll pro milligramm')
 
