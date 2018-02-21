@@ -9,8 +9,8 @@ INSERT [dbo].[breastfeeding] ([id], [breastfeeding], [description]) VALUES (3, 0
 
 SET IDENTITY_INSERT [dbo].[breastfeeding] OFF
 SET IDENTITY_INSERT [dbo].[type] ON
-INSERT [dbo].[type] ([id], [character], [type]) VALUES (1, N'm', N'mutter')
-INSERT [dbo].[type] ([id], [character], [type]) VALUES (2, N'k', N'kind')
+INSERT [dbo].[type] ([id], [character], [type]) VALUES (1, N'm', N'Mutter')
+INSERT [dbo].[type] ([id], [character], [type]) VALUES (2, N'k', N'Kind')
 
 SET IDENTITY_INSERT [dbo].[type] OFF
 SET IDENTITY_INSERT [dbo].[person] ON
@@ -214,7 +214,6 @@ INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (196, N'4444'
 INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (197, N'4444', N'0097', 2)
 INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (198, N'4444', N'0098', 2)
 INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (199, N'4444', N'0099', 2)
-GO
 INSERT [dbo].[person] ([id], [prefix], [suffix], [type_id]) VALUES (200, N'4444', N'0100', 2)
 
 SET IDENTITY_INSERT [dbo].[person] OFF
@@ -319,8 +318,9 @@ INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) 
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (97, 197, 3, 97)
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (98, 198, 3, 98)
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (99, 199, 3, 99)
-GO
 INSERT [dbo].[person_person] ([id], [baby_id], [breastfeeding_id], [mother_id]) VALUES (100, 200, 3, 100)
+GO
+
 SET IDENTITY_INSERT [dbo].[person_person] OFF
 SET IDENTITY_INSERT [dbo].[category] ON
 INSERT [dbo].[category] ([id], [category_name]) VALUES (1, N'Hormone Axes')
@@ -444,9 +444,10 @@ INSERT [dbo].[source] ([id], [name]) VALUES (5, N'Breast milk')
 
 SET IDENTITY_INSERT [dbo].[source] OFF
 SET IDENTITY_INSERT [dbo].[state] ON
-INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (1, N'Not Detectable', 1, N'ND')
-INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (2, N'Zu wenig / Kein Probenmaterial', 1, N'KP')
-INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (3, N'Suspekter Wert', 0, N'SW')
+INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (1, N'Wert OK', 0, N'OK')
+INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (2, N'Not Detectable', 1, N'ND')
+INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (3, N'Zu wenig / Kein Probenmaterial', 1, N'KP')
+INSERT [dbo].[state] ([id], [description], [null_allowed], [text]) VALUES (4, N'Suspekter Wert', 0, N'SW')
 
 SET IDENTITY_INSERT [dbo].[state] OFF
 
@@ -454,23 +455,24 @@ INSERT INTO [dbo].[role] ([description],[name])VALUES('Administrator','ROLE_ADMI
 INSERT INTO [dbo].[role] ([description],[name])VALUES('User','ROLE_USER')
 
 
+INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Admin','Pa$$w0rd')
+INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Michaela','Pa$$w0rd')
+INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Kevin','Pa$$w0rd')
+INSERT INTO [dbo].[uzer] ([username],[password])VALUES('Sebastian','Pa$$w0rd')
+
+
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(1,1)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(3,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(4,2)
+INSERT INTO [dbo].[uzer_roles] (uzers_id,roles_id)VALUES(2,1)
+
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/ml','nano moll pro milliliter')
 INSERT INTO [dbo].[dimension]([dimension],[description]) VALUES ('nmoll/mg','nano moll pro milligramm')
 
-INSERT INTO [dbo].[comment]([comment])VALUES('Naaaaaaaaaaaaaaa Fuuuu')
-INSERT INTO [dbo].[comment]([comment])VALUES('Der Wert ist ein Wahnsinn')
-INSERT INTO [dbo].[comment]([comment])VALUES('Für die Tonne')
-INSERT INTO [dbo].[comment]([comment])VALUES('Glei Einfechern')
-INSERT INTO [dbo].[comment]([comment])VALUES('Ojeeeeeeeeee')
 
-
-
-INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,1,1)
-INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,1,2)
-INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,2,2)
-INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,2,1)
-
-
-
-
-
+-- Zum einfügen von Testdaten in die Values-Tabelle die vier folgenden Zeilen aktivieren!
+--INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,1,1)
+--INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,1,2)
+--INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,2,2)
+--INSERT INTO [dbo].[value]([value],[biomarker_id],[mr_id],[person_id],[source_id],[state_id],[dimension_id],[comment_id]) VALUES (1111111.1111111111111,3,2 ,1,3,2,2,1)
