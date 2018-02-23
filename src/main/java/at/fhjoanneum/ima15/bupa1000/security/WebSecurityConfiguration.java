@@ -30,10 +30,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http    .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home","/createUzer","/saveUzerWithRole").permitAll()
+                .antMatchers("/", "/home").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/values/**").access("hasRole('ADMIN')")
                 .antMatchers(HttpMethod.GET,"/categories","/states","/roles","/biomarkers","/types","/persons","/person_Persons","/mRs","/breastfeedings", "/dimensions","/sources").access("hasRole('USER') or hasRole('ADMIN')")
-                .antMatchers("/categories","/states","/roles","/biomarkers","/types","/persons","/person_Persons","/mRs","/breastfeedings", "/dimensions","/sources").access("hasRole('ADMIN')")
+                .antMatchers("/categories","/states","/roles","/biomarkers","/types","/persons","/person_Persons","/mRs","/breastfeedings", "/dimensions","/sources","/saveUzerWithRole","/saveUzerWithRoleAdmin").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()

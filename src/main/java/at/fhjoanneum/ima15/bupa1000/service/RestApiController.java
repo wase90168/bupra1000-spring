@@ -108,11 +108,13 @@ public class RestApiController {
     @RequestMapping(value = "/saveUzerWithRole", method = RequestMethod.POST)
     public void saveUzerWithRole(@RequestParam("username") String username, @RequestParam("password") String password) {
         Uzer uzer = new Uzer();
-        uzer.setUsername(username);
-        uzer.setPassword(password);
-        uzerRepository.save(uzer);
-        uzer.setRoles(roleRepository.findRoleByName("ROLE_USER"));
-        uzerRepository.save(uzer);
+        if(uzerRepository.findByUsername(username) == null) {
+            uzer.setUsername(username);
+            uzer.setPassword(password);
+            uzerRepository.save(uzer);
+            uzer.setRoles(roleRepository.findRoleByName("ROLE_USER"));
+            uzerRepository.save(uzer);
+        }
 
 
     }
