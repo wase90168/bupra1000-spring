@@ -69,9 +69,15 @@ public class Uzer  {
 
     @JsonProperty
     public void setPassword(String password) {
+
+
+        this.password = encodePassword(password);
+    }
+
+    public String encodePassword(String password){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
-        this.password = hashedPassword;
+        return hashedPassword;
     }
 
     public List<Role> getRoles() {
