@@ -9,7 +9,7 @@ interface InlineCategory {
 
     Long getId();
 
-    String getName();
+    String getCategoryName();
 
 
 

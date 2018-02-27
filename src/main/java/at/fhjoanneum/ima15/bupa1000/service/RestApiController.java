@@ -106,7 +106,7 @@ public class RestApiController {
     }
 
     @RequestMapping(value = "/saveUzerWithRole", method = RequestMethod.POST)
-    public void saveUzerWithRole(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public ResponseEntity saveUzerWithRole(@RequestParam("username") String username, @RequestParam("password") String password) {
         Uzer uzer = new Uzer();
         if(uzerRepository.findByUsername(username) == null) {
             uzer.setUsername(username);
@@ -114,6 +114,10 @@ public class RestApiController {
             uzerRepository.save(uzer);
             uzer.setRoles(roleRepository.findRoleByName("ROLE_USER"));
             uzerRepository.save(uzer);
+            return new ResponseEntity(HttpStatus.CREATED);
+        }
+        else{
+            return new ResponseEntity(HttpStatus.CONFLICT);
         }
 
 
