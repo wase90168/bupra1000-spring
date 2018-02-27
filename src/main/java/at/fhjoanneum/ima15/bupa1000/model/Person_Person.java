@@ -3,6 +3,13 @@ package at.fhjoanneum.ima15.bupa1000.model;
 import javax.persistence.*;
 import java.util.List;
 
+
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "mother_id"),
+                @UniqueConstraint(columnNames = "baby_id")
+        }
+)
 @Entity
 public class Person_Person {
 
